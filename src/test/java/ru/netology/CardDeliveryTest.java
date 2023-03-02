@@ -28,11 +28,11 @@ public class CardDeliveryTest {
         Configuration.holdBrowserOpen = true;
         open("http://localhost:9999/");
 
-        $("input[type='text']").setValue("Ставрополь");
-        $("[placeholder='Дата встречи']").doubleClick().sendKeys(sendData);
-        $("input[name='name']").setValue("Сергей Роликов");
-        $("input[name='phone']").setValue("+79993332211");
-        $(".checkbox__box").click();
+        $("[data-test-id='city'] input").setValue("Ставрополь");
+        $("[data-test-id='date'] input").doubleClick().sendKeys(sendData);
+        $("[data-test-id='name'] input").setValue("Сергей Роликов");
+        $("[data-test-id='phone'] input").setValue("+79993332211");
+        $("[data-test-id='agreement']").click();
         $(".button__text").click();
         $("div[data-test-id='notification']").should(appear, Duration.ofSeconds(15)).shouldHave(Condition.text("Успешно!"));
         $("div[data-test-id='notification']").should(appear, Duration.ofSeconds(15)).shouldHave(Condition.text("Встреча успешно забронирована на " + sendData));
